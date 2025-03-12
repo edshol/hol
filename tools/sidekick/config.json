@@ -17,7 +17,7 @@
         "id": "library",
         "title": "Library",
         "environments": ["edit"],
-        "url": "main--hol--edshol.hlx.live/tools/sidekick/library.html",
+        "url": "https://main--hol--edshol.hlx.live/tools/sidekick/library.html",
         "includePaths": ["**.docx**"]
     },
     {
