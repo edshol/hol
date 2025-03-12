@@ -3,7 +3,7 @@
     "plugins": [
     {
         "id": "asset-library",
-        "title": "Assets Library",
+        "title": "Asset Library",
         "environments": [
             "edit"
         ],
