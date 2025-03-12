@@ -3,7 +3,7 @@
     "plugins": [
     {
         "id": "asset-library",
-        "title": "AEM Assets Library",
+        "title": "Assets Library",
         "environments": [
             "edit"
         ],
@@ -15,9 +15,9 @@
     },
     {
         "id": "library",
-        "title": "Library",
+        "title": "Block Library",
         "environments": ["edit"],
-        "url": "https://main--hol--edshol.hlx.live/tools/sidekick/library.html",
+        "url": "https://main--hol--edshol.hlx.page/tools/sidekick/library.html",
         "includePaths": ["**.docx**"]
     },
     {
