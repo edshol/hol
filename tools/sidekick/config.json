@@ -26,7 +26,7 @@
       "environments": [
           "preview","liv","edit"
       ],
-      "url": "https://experience.adobe.com/aem/generate-variations",
+      "url": "javascript:(function%20()%20%7B%0A%20%20%20%20const%20script%20%3D%20document.createElement('script')%3B%0A%20%20%20%20script.src%20%3D%20'https%3A%2F%2Fexperience.adobe.com%2Fsolutions%2Faem-sites-genai-aem-genai-variations-mfe%2Fstatic-assets%2Fresources%2Fsidekick%2Fclient.js'%3B%0A%20%20%20%20document.head.appendChild(script)%3B%0A%7D)()%3B%0A",
       "passConfig": true,
       "includePaths": ["**.docx**"]
     },
