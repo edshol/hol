@@ -281,6 +281,10 @@ main .section.highlight {
   }
   .default-content-wrapper {
     max-width: 1200px!important;
+    picture img {
+      width:100%;
+      max-width:1200px;
+    }
     h1 {
       position: relative;
       box-sizing: border-box;
