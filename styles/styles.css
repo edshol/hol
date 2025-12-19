@@ -273,8 +273,8 @@ main .section.highlight {
   min-width: 300px
 }
 
-.style1 {
-  max-width: 1200px;
+.section.style1 {
+  max-width: 1200px!important;
   margin:auto;
   .section > div {
     max-width: 1200px!important;
