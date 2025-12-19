@@ -280,6 +280,7 @@ main .section.highlight {
     max-width: 1200px!important;
   }
   .default-content-wrapper {
+    max-width: 1200px!important;
     h1 {
       position: relative;
       box-sizing: border-box;
