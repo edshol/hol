@@ -273,6 +273,17 @@ main .section.highlight {
   min-width: 300px
 }
 
+
+
+.section.full-width > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  img {
+    width:100%;
+    height:auto;
+  }
+}
+
 .section.style1 {
   max-width: 1200px!important;
   margin:auto;
