@@ -314,3 +314,10 @@ main .section.highlight {
   }
 }
 
+
+/* すべての画像を大きく表示したい場合 */
+main img {
+  width: 100%;
+  max-width: 1200px; /* ここを希望のサイズに変更 */
+  height: auto;
+}
