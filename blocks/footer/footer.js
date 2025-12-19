@@ -7,8 +7,8 @@ import { loadFragment } from '../fragment/fragment.js';
  */
 export default async function decorate(block) {
   const footerMeta = getMetadata('footer');
-  console.log("Footer Meta:"+footerMeta);
-  console.log("Footer Meta:"+footerMeta.footer);
+  // console.log("Footer Meta:"+footerMeta);
+  // console.log("Footer Meta:"+footerMeta.footer);
 
   block.textContent = '';
 
