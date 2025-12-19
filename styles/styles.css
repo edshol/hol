@@ -275,5 +275,7 @@ main .section.highlight {
 
 .style1 {
   background-color: #ffeff2;
+  max-width: 1200px;
+  margin:auto;
 }
 
