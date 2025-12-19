@@ -14,9 +14,12 @@ export default async function decorate(block) {
 
   // load footer fragment
   //const footerPath = footerMeta.footer || '/footer';
-  const footerPath = footerMeta || '/footer';
-  console.log("Footer Path:"+footerPath);
+  //const footerPath = footerMeta || '/footer';
+  console.log("Footer Path:"+footerPath);  
 
+  //const fragment = await loadFragment(footerPath);
+
+  const footerPath = footerMeta ? new URL(footerMeta).pathname : '/nav';
   const fragment = await loadFragment(footerPath);
 
   // decorate footer DOM
