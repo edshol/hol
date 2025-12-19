@@ -276,6 +276,9 @@ main .section.highlight {
 .style1 {
   max-width: 1200px;
   margin:auto;
+  .section > div {
+    max-width: 1200px!important;
+  }
   .default-content-wrapper {
     h1 {
       position: relative;
