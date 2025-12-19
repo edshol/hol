@@ -10,7 +10,7 @@ export default function decorate(block) {
     // 第4引数の width が、実際にサーバーへ要求する画像サイズになります
     const optimizedPicture = createOptimizedPicture(img.src, img.alt, false, [
       { media: '(min-width: 600px)', width: '1200' }, // 600px以上の画面では1200pxの画像を要求
-      { width: '750' } // それ以外（スマホなど）
+      { width: '1200' } // それ以外（スマホなど）
     ]);
 
     originalPicture.replaceWith(optimizedPicture);
