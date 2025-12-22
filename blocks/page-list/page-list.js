@@ -2,43 +2,50 @@ export default async function decorate(block) {
   const rows = [...block.querySelectorAll(':scope > div')];
   const config = {};
 
-  // table → config に変換
+  // table → config
   rows.forEach((row) => {
     const key = row.children[0]?.textContent.trim();
     const value = row.children[1]?.textContent.trim();
     if (key && value) config[key] = value;
   });
 
-  const {
-    path = '/',
-    limit = 10,
-    template = 'simple',
-  } = config;
+  let { path, limit = 12 } = config;
 
-  // index取得
+  if (!path) {
+    console.warn('page-list: path is required');
+    return;
+  }
+
+  // 末尾スラッシュを保証
+  if (!path.endsWith('/')) path += '/';
+
   const resp = await fetch('/query-index.json');
   const json = await resp.json();
 
-  // path filter
   const pages = json.data
     .filter((item) => item.path.startsWith(path))
     .slice(0, Number(limit));
 
-  // 描画
-  const ul = document.createElement('ul');
-  ul.className = `page-list-${template}`;
+  const wrapper = document.createElement('div');
+  wrapper.className = 'page-list';
 
   pages.forEach((page) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <a href="${page.path}">
-        <strong>${page.title || ''}</strong><br>
-        <span>${page.description || ''}</span>
-      </a>
+    const card = document.createElement('a');
+    card.className = 'page-card';
+    card.href = page.path;
+
+    card.innerHTML = `
+      <div class="page-card-image">
+        ${page.image ? `<img src="${page.image}" alt="">` : ''}
+      </div>
+      <div class="page-card-body">
+        <h3>${page.title || ''}</h3>
+        <p>${page.description || ''}</p>
+      </div>
     `;
-    ul.appendChild(li);
+
+    wrapper.appendChild(card);
   });
 
-  block.textContent = '';
-  block.appendChild(ul);
+  block.replaceChildren(wrapper);
 }

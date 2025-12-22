@@ -1,13 +1,37 @@
-.query-index-simple {
-  list-style: none;
-  padding: 0;
+.page-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
 }
 
-.page-list li {
-  margin-bottom: 16px;
-}
-
-.query-index-simple a {
+.page-card {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
   text-decoration: none;
   color: inherit;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.page-card-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.page-card-body {
+  padding: 16px;
+}
+
+.page-card-body h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.page-card-body p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
 }
