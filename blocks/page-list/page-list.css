@@ -1,10 +1,13 @@
 .page-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  display: flex;
+  flex-wrap: wrap;        /* ← これがポイント */
   gap: 24px;
 }
 
+/* カード */
 .page-card {
+  flex: 0 0 260px;        /* カード幅 */
+  max-width: 100%;
   display: block;
   border-radius: 12px;
   overflow: hidden;
