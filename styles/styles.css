@@ -329,6 +329,7 @@ main:has(.style1) {
     padding-bottom: 0px;
 
     .default-content-wrapper {
+      padding-top: 6px;
       background:white;
       color: #313131;
       width: 750px;
