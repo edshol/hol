@@ -286,9 +286,14 @@ main .section.highlight {
 }
 
 .section.style1 {
+  .default-content-wrapper {
+    padding: 1px;
+  }
+
   background-image: linear-gradient(-90deg, #bce5bd 0%, #82c384 50%, #aad2e7 50%, #aad2e7 100%);
   padding-top: 0px;
   padding-bottom: 0px;
+
 
   margin:auto;
   .section > div {
@@ -319,7 +324,7 @@ main .section.highlight {
 }
 
 .section.camp-bg-white {
-    padding-top: 16px;
+    padding-top: 0px;
     padding-bottom: 0px;
     background-image: linear-gradient(-90deg, #bce5bd 0%, #82c384 50%, #aad2e7 50%, #aad2e7 100%);
 
