@@ -351,7 +351,132 @@ main:has(.bg-greenblue) {
         border-radius: 50px;      
       }
     }
+
+      .fragment-wrapper {
+        .button-container {
+          margin:10px;
+          padding-bottom: 10px;
+          a {
+            text-align: center!important;
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            padding: 14px 40px 14px 44px;
+            background-color: #fff;
+            line-height: 1.2;
+            color: #0171a6;
+            font-size: 1.133333rem;
+            font-family: "Noto Sans JP";
+            font-weight: 800;
+            text-align: left;
+            text-decoration: none !important;
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+            text-shadow: 0px 0px 0.1px rgba(51, 51, 51, 0.5);
+          }
+          a::after {
+              left: 8px;
+              right: inherit;
+              content: '＜';
+              position: absolute;
+              top: 50%;
+              color: #0171a6;
+              font-family: "icn_font";
+              font-size: 1.86666rem;
+              font-weight: normal;
+              line-height: 0;
+          }
+
+        }
+      }
+
   }
 
+/* -------------------------------------------------------------------------------- */
+/* added by tekaneko for Fami Matsuken */
 
+.section.bg-famimatsuken {
+  background-image: url(https://www.family.co.jp/content/dam/family/campaign/2512_famimatsuken/bg_pc02.webp);
+  position: relative;
+  background-color: #b81c0d;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  padding: 16px;
+  .default-content-wrapper {
+    max-width: 1200px;
+    h1 {
+          background-color: #f6de8f;
+          font-size: clamp(1.4rem, 1.083rem + 0.69vw, 1.6rem);
+          color: #000;
+          text-align: center;
+          line-height: 1.3;
+          padding: 10px 0;
+          margin-bottom: 10px;
+    }
+  }
+  .columns.title-area {
+    width: calc(100vw - 0.7%);
+    margin: 0 calc(50% - 50vw);
+    height: 175px;
+    background-color: #e0c961;
+    background-image: linear-gradient(57deg, rgba(248, 209, 55, 1), rgba(255, 242, 190, 1) 33%, rgba(242, 214, 125, 1) 50%, rgba(245, 221, 141, 1) 68%, rgba(226, 179, 26, 1));
+    background-size: 35px 35px;
+    h2 {
+      font-optical-sizing: auto;
+      margin-top: 18px;
+      font-weight: 800;
+      font-style: normal;
+      text-align: center;
+      font-size: clamp(1.6rem, 0.172rem + 3.1vw, 2.5rem);
+      line-height: 1.0;
+      color: #000;
+      text-shadow: 3px 3px 3px #fdefb8, -3px -3px 3px #fdefb8, -3px 3px 3px #fdefb8, 3px -3px 3px #fdefb8, 3px 0px 3px #fdefb8, -3px -0px 3px #fdefb8, 0px 3px 3px #fdefb8, 0px -3px 3px #fdefb8;
+    }
+    p {
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-style: normal;
+      text-align: center;
+      font-size: clamp(0.95rem, 0.474rem + 1.03vw, 1.25rem);
+      margin-top: 1rem;
+      color: #000;
+      text-shadow: 2px 2px 2px #fdefb8, -2px -2px 2px #fdefb8, -2px 2px 2px #fdefb8, 2px -2px 2px #fdefb8, 2px 0px 2px #fdefb8, -2px -0px 2px #fdefb8, 0px 2px 2px #fdefb8, 0px -2px 2px #fdefb8;
+    }
+
+  }
+
+  .columns.col-famimatsuken {
+    max-width: 1200px;
+    background-color: rgba(0,0,0,0.4);
+    margin:auto;
+    padding: 20px;
+    > div{
+      align-items: unset!important;
+      > div {
+        background: #fff;
+        border: 4px solid #d4af37;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        >h2 {
+          font-size: clamp(0.9rem, 0.384rem + 1.12vw, 1.225rem);
+          font-weight: bold;
+          line-height: 1.5;
+          margin-bottom: 8px;
+          color: #000;
+          a {
+            color: #000;
+          }
+        }
+      }
+    } 
+
+  }
+}
 
