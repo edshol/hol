@@ -288,6 +288,10 @@ main .section.highlight {
 main:has(.bg-bluegreen) {
   background-image: linear-gradient(-90deg, #bce5bd 0%, #82c384 50%, #aad2e7 50%, #aad2e7 100%);
 }
+main:has(.bg-greenblue) {
+  background-image: linear-gradient(-90deg, #aad2e7 50%, #aad2e7 100%, #bce5bd 0%, #82c384 50%);
+}
+
 .section.bg-bluegreen {
   .default-content-wrapper {
     padding-top: 1px;
