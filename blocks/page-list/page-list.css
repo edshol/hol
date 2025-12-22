@@ -1,0 +1,13 @@
+.query-index-simple {
+  list-style: none;
+  padding: 0;
+}
+
+.page-list li {
+  margin-bottom: 16px;
+}
+
+.query-index-simple a {
+  text-decoration: none;
+  color: inherit;
+}
