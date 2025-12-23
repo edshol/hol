@@ -618,7 +618,7 @@ main:has(.bg-greenblue) {
   background-image: linear-gradient(90deg, #CFDFEF, #E1F0DD);
 
   .default-content-wrapper {
-    width: 1150px;
+    width: 1080px;
     padding: 30px;
     margin:28px;
     background: white;
