@@ -1,5 +1,5 @@
 /**
- * "YYYY/MM/DD HH24:MI" → Date
+ * "YYYY/MM/DD HH:MI" → Date
  * 未定義・空・不正は null
  */
 function parseDateTime(str) {
@@ -16,7 +16,7 @@ function parseDateTime(str) {
 
 /**
  * エントリーの代表日時
- * startdate → lastmodified
+ * startdate があればそれ、なければ lastmodified
  */
 function getEntryDate(page) {
   return (
@@ -42,18 +42,31 @@ function getCampaignStatus(page, now = new Date()) {
 }
 
 /**
- * 有効期限内か（active 判定）
- * start/end が無いものは false（＝active 扱いしない）
- */
-function isActive(page, now = new Date()) {
-  return getCampaignStatus(page, now) === 'active';
-}
-
-/**
  * 代表日時で新しい順
  */
 function sortByEntryDateDesc(a, b) {
   return getEntryDate(b) - getEntryDate(a);
+}
+
+/**
+ * "YYYY/MM/DD HH:MI" → "YYYY/MM/DD"
+ */
+function formatDateOnly(str) {
+  if (!str) return '';
+  return str.trim().split(' ')[0];
+}
+
+/**
+ * 表示用日付レンジ（日付のみ）
+ */
+function formatDateRange(page) {
+  const start = formatDateOnly(page.startdate);
+  const end = formatDateOnly(page.enddate);
+
+  if (!start && !end) return '';
+  if (start && end) return `${start} – ${end}`;
+  if (start) return `${start} 〜`;
+  return `〜 ${end}`;
 }
 
 export default async function decorate(block) {
@@ -85,9 +98,9 @@ export default async function decorate(block) {
   const now = new Date();
 
   const pages = json.data
-    // 対象パス
+    // 対象パス配下
     .filter((item) => item.path.startsWith(path))
-    // mode 別フィルタ
+    // mode フィルタ
     .filter((item) => {
       const status = getCampaignStatus(item, now);
 
@@ -95,9 +108,9 @@ export default async function decorate(block) {
       if (mode === 'upcoming') return status === 'upcoming';
       if (mode === 'all') return true;
 
-      return status === 'active'; // フォールバック
+      return status === 'active';
     })
-    // 並び順（あなた指定）
+    // 並び替え（あなたのロジック）
     .sort(sortByEntryDateDesc)
     // 件数制限
     .slice(0, Number(limit));
@@ -107,6 +120,7 @@ export default async function decorate(block) {
 
   pages.forEach((page) => {
     const status = getCampaignStatus(page, now);
+    const dateRange = formatDateRange(page);
 
     const badgeHtml = status
       ? `<span class="campaign-badge campaign-badge--${status}">
@@ -126,6 +140,7 @@ export default async function decorate(block) {
       <div class="page-card-body">
         <h3>${page.title || ''}</h3>
         <p>${page.description || ''}</p>
+        ${dateRange ? `<p class="page-card-dates">${dateRange}</p>` : ''}
       </div>
     `;
 
