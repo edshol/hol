@@ -27,18 +27,21 @@ function getEntryDate(page) {
 }
 
 /**
- * キャンペーン状態判定
- * return: 'active' | 'upcoming' | 'ended' | null
+ * キャンペーン状態判定（修正版）
+ * return: 'active' | 'upcoming' | 'ended'
  */
 function getCampaignStatus(page, now = new Date()) {
   const start = parseDateTime(page.startdate);
   const end = parseDateTime(page.enddate);
 
+  // 開始前
   if (start && now < start) return 'upcoming';
-  if (end && now > end) return 'ended';
-  if (start || end) return 'active';
 
-  return null;
+  // 終了後
+  if (end && now > end) return 'ended';
+
+  // それ以外はすべて開催中（常設含む）
+  return 'active';
 }
 
 /**
@@ -100,17 +103,18 @@ export default async function decorate(block) {
   const pages = json.data
     // 対象パス配下
     .filter((item) => item.path.startsWith(path))
-    // mode フィルタ
+    // mode フィルタ（修正版）
     .filter((item) => {
       const status = getCampaignStatus(item, now);
 
       if (mode === 'active') return status === 'active';
       if (mode === 'upcoming') return status === 'upcoming';
+      if (mode === 'ended') return status === 'ended';
       if (mode === 'all') return true;
 
       return status === 'active';
     })
-    // 並び替え（あなたのロジック）
+    // 並び替え（startdate → lastmodified）
     .sort(sortByEntryDateDesc)
     // 件数制限
     .slice(0, Number(limit));
@@ -122,11 +126,11 @@ export default async function decorate(block) {
     const status = getCampaignStatus(page, now);
     const dateRange = formatDateRange(page);
 
-    const badgeHtml = status
-      ? `<span class="campaign-badge campaign-badge--${status}">
-          ${status === 'active' ? '開催中' : status === 'upcoming' ? '予告' : '終了'}
-        </span>`
-      : '';
+    const badgeHtml = `
+      <span class="campaign-badge campaign-badge--${status}">
+        ${status === 'active' ? '開催中' : status === 'upcoming' ? '予告' : '終了'}
+      </span>
+    `;
 
     const card = document.createElement('a');
     card.className = 'page-card';
