@@ -27,21 +27,8 @@ function getEntryDate(page) {
 }
 
 /**
- * 日付範囲内か（未設定は true）
- */
-function isWithinDateRange(page, now = new Date()) {
-  const start = parseDateTime(page.startdate);
-  const end = parseDateTime(page.enddate);
-
-  if (start && now < start) return false;
-  if (end && now > end) return false;
-
-  return true;
-}
-
-/**
- * badge 判定
- * return: 'upcoming' | 'active' | 'ended' | null
+ * キャンペーン状態判定
+ * return: 'active' | 'upcoming' | 'ended' | null
  */
 function getCampaignStatus(page, now = new Date()) {
   const start = parseDateTime(page.startdate);
@@ -49,9 +36,17 @@ function getCampaignStatus(page, now = new Date()) {
 
   if (start && now < start) return 'upcoming';
   if (end && now > end) return 'ended';
-  if (start) return 'active';
+  if (start || end) return 'active';
 
   return null;
+}
+
+/**
+ * 有効期限内か（active 判定）
+ * start/end が無いものは false（＝active 扱いしない）
+ */
+function isActive(page, now = new Date()) {
+  return getCampaignStatus(page, now) === 'active';
 }
 
 /**
@@ -72,7 +67,10 @@ export default async function decorate(block) {
     if (key && value) config[key] = value;
   });
 
-  let { path, limit = 12 } = config;
+  let { path, limit = 12, mode } = config;
+
+  // mode 未指定 → active
+  mode = mode || 'active';
 
   if (!path) {
     console.warn('page-list: path is required');
@@ -87,9 +85,21 @@ export default async function decorate(block) {
   const now = new Date();
 
   const pages = json.data
+    // 対象パス
     .filter((item) => item.path.startsWith(path))
-    .filter((item) => isWithinDateRange(item, now))
+    // mode 別フィルタ
+    .filter((item) => {
+      const status = getCampaignStatus(item, now);
+
+      if (mode === 'active') return status === 'active';
+      if (mode === 'upcoming') return status === 'upcoming';
+      if (mode === 'all') return true;
+
+      return status === 'active'; // フォールバック
+    })
+    // 並び順（あなた指定）
     .sort(sortByEntryDateDesc)
+    // 件数制限
     .slice(0, Number(limit));
 
   const wrapper = document.createElement('div');
