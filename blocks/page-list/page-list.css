@@ -1,113 +1,39 @@
-/* =========================
-   page-list layout
-========================= */
-
 .page-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;        /* ← これがポイント */
   gap: 24px;
 }
 
-/* =========================
-   card
-========================= */
-
-.page-list .page-card {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 280px;
-  min-width: 0;
+/* カード */
+.page-card {
+  flex: 0 0 260px;        /* カード幅 */
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  background: #fff;
   text-decoration: none;
   color: inherit;
-  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
 }
 
-/* =========================
-   image area
-========================= */
-
-.page-list .page-card-image {
-  position: relative;           /* badge の基準点 */
+.page-card-image img {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #eee;
-}
-
-.page-list .page-card-image img {
-  width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
 }
 
-/* =========================
-   badge
-========================= */
-
-.page-list .campaign-badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  z-index: 2;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  border-radius: 999px;
-  color: #fff;
-  pointer-events: none;
-  white-space: nowrap;
+.page-card-body {
+  padding: 16px;
 }
 
-.page-list .campaign-badge--active {
-  background: #e60012; /* 開催中 */
-}
-
-.page-list .campaign-badge--upcoming {
-  background: #555; /* 予告 */
-}
-
-.page-list .campaign-badge--ended {
-  background: #999; /* 終了 */
-}
-
-/* =========================
-   body
-========================= */
-
-.page-list .page-card-body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 12px 4px;
-  gap: 6px;
-}
-
-.page-list .page-card-body h3 {
-  margin: 0;
+.page-card-body h3 {
+  margin: 0 0 8px;
   font-size: 16px;
-  line-height: 1.4;
 }
 
-.page-list .page-card-body p {
+.page-card-body p {
   margin: 0;
   font-size: 14px;
-  line-height: 1.6;
-  color: #555;
-}
-
-/* =========================
-   state styling (optional)
-========================= */
-
-/* 終了キャンペーンを薄く表示 */
-.page-list .campaign-badge--ended + img {
-  filter: grayscale(100%);
-  opacity: 0.6;
-}
-
-/* hover */
-.page-list .page-card:hover h3 {
-  text-decoration: underline;
+  color: #666;
 }
