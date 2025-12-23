@@ -615,12 +615,12 @@ main:has(.bg-greenblue) {
 .section.camp-style-1-bg-white {
   width: 1200px;
   margin: auto;
-  padding: 30px;
   background-image: linear-gradient(90deg, #CFDFEF, #E1F0DD);
 
   .default-content-wrapper {
     width: 1150px;
     padding: 30px;
+    margin:28px;
     background: white;
     border-radius: 30px;
     h2 {
