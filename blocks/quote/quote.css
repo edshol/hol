@@ -1,0 +1,38 @@
+.quote {
+  background-color: #d3d3d3;
+  margin: 1rem 0;
+  padding: 2rem 2.5rem;
+}
+
+.quote blockquote {
+  margin: 0 0 1rem;
+}
+
+.quote blockquote p {
+  margin: 0;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.quote .quote-author {
+  margin: 0;
+  font-size: 1.75rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+@media (width <= 900px) {
+  .quote {
+    padding: 1.5rem;
+  }
+
+  .quote blockquote p {
+    font-size: 1.5rem;
+  }
+
+  .quote .quote-author {
+    font-size: 1.25rem;
+  }
+}
