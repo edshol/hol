@@ -198,6 +198,9 @@ main .section {
   main .quote-container,.tabs-container {
     padding: 64px 0px;
   }
+  main .tabs-container {
+    padding: 64px 0px;
+  }
 }
 
 @media (width >= 900px) {
