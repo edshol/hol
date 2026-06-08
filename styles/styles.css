@@ -195,7 +195,7 @@ main .section {
     padding: 64px 32px;
     /* padding: 64px 0px; */
   }
-  main .quote-container {
+  main .quote-container,.tabs-container {
     padding: 64px 0px;
   }
 }
