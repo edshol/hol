@@ -195,6 +195,9 @@ main .section {
     padding: 64px 32px;
     /* padding: 64px 0px; */
   }
+  main .quote-container {
+    padding: 64px 0px;
+  }
 }
 
 @media (width >= 900px) {
